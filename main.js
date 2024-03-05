@@ -21,11 +21,11 @@ if (playerWins > compWins)
 }
 else if (compWins > playerWins)
 {
-    console.log("You lost rock paper, scissors :(");
+    console.log("You lost rock, paper, scissors :(");
 }
 else
 {
-    console.log("You tied rock paper scissors :|");
+    console.log("You tied rock, paper, scissors :|");
 }
 //Define rock paper scissors function prototype
 function playGame()

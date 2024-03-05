@@ -8,6 +8,7 @@ let scissorsWin = 'You win! Scissors beats paper';
 let rockLose = 'You lose...paper beats rock...';
 let paperLose = 'You lose...scissors beats paper...';
 let scissorsLose = 'You lose...rock beats scissors...';
+let tie = 'Tie! Go again!';
 //Play rock paper scissors
 for (let i = 0; i < rounds; i++)
 {
@@ -49,10 +50,9 @@ function playGame()
 //Play 1 round of rock paper scissors
 function playRound(playerSelection, computerSelection)
 {
-    let playerSelectionLower = playerSelection.toLowerCase;
-    let tie = 'Tie! Go again!';
+    let playerSelectionLower = playerSelection.toLowerCase();
 
-    if (playerSelectionLower === 'rock' && computerSelection=== 'scissors')
+    if (playerSelectionLower === 'rock' && computerSelection === 'scissors')
     {
         return rockWin;
     }

@@ -37,10 +37,6 @@ function playGame()
     {
         ++compWins;
     }
-    else
-    {
-        continue;
-    }
 
     console.log(`You: ${playerWins}\nComputer: ${compWins}`);
 };

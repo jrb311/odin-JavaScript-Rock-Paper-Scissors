@@ -2,6 +2,12 @@
 let playerWins = 0;
 let compWins = 0;
 let rounds = 5;
+let rockWin = 'You win! Rock beats scissors';
+let paperWin = 'You win! Paper beats rock';
+let scissorsWin = 'You win! Scissors beats paper';
+let rockLose = 'You lose...paper beats rock...';
+let paperLose = 'You lose...scissors beats paper...';
+let scissorsLose = 'You lose...rock beats scissors...';
 //Play rock paper scissors
 for (let i = 0; i < rounds; i++)
 {
@@ -44,12 +50,6 @@ function playGame()
 function playRound(playerSelection, computerSelection)
 {
     let playerSelectionLower = playerSelection.toLowerCase;
-    let rockWin = 'You win! Rock beats scissors';
-    let paperWin = 'You win! Paper beats rock';
-    let scissorsWin = 'You win! Scissors beats paper';
-    let rockLose = 'You lose...paper beats rock...';
-    let paperLose = 'You lose...scissors beats paper...';
-    let scissorsLose = 'You lose...rock beats scissors...';
     let tie = 'Tie! Go again!';
 
     if (playerSelectionLower === 'rock' && computerSelection=== 'scissors')
@@ -87,20 +87,17 @@ function getComputerChoice()
     let min = 1;
     let max = 3;
 
-    if (getRandomIntInclusive(min, max) == 1)
+    if (getRandomIntInclusive(min, max) === 1)
     {
-        let computerSelection = 'rock';
-        return computerSelection;
+        return 'rock';
     }
-    if (getRandomIntInclusive(min, max) == 2)
+    if (getRandomIntInclusive(min, max) === 2)
     {
-        let computerSelection = 'paper';
-        return computerSelection;
+        return 'paper';
     }
-    if (getRandomIntInclusive(min, max) == 3)
+    if (getRandomIntInclusive(min, max) === 3)
     {
-        let computerSelection = 'scissors';
-        return computerSelection;
+        return 'scissors';
     }
 };
 //Get random int between 1 and 3

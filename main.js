@@ -1,7 +1,6 @@
 //Define global variables to track playerWins and compWins, and number of rounds in the game
 let playerWins = 0;
 let compWins = 0;
-let rounds = 5;
 let rockWin = 'You win! Rock beats scissors';
 let paperWin = 'You win! Paper beats rock';
 let scissorsWin = 'You win! Scissors beats paper';
@@ -9,32 +8,57 @@ let rockLose = 'You lose...paper beats rock...';
 let paperLose = 'You lose...scissors beats paper...';
 let scissorsLose = 'You lose...rock beats scissors...';
 let tie = 'Tie! Go again!';
+let playerSelection;
+
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+const gameOver = document.querySelector('.gameOver');
+
+const score = document.querySelector('.score');
+score.textContent = `You: ${playerWins} Computer: ${compWins}`;
 //Play rock paper scissors
-for (let i = 0; i < rounds; i++)
-{
+rock.addEventListener('click', () => {
+    if (playerWins == 5 || compWins == 5)
+    {
+        gameOver.textContent = '';
+        playerWins = 0;
+        compWins = 0;
+        score.textContent = `You: ${playerWins} Computer: ${compWins}`;
+    }
+    playerSelection = 'rock';
     playGame();
-    
-}
-if (playerWins > compWins)
-{
-    console.log("You won rock, paper, scissors!! :)");
-}
-else if (compWins > playerWins)
-{
-    console.log("You lost rock, paper, scissors :(");
-}
-else
-{
-    console.log("You tied rock, paper, scissors :|");
-}
+});
+paper.addEventListener('click', () => {
+    if (playerWins == 5 || compWins == 5)
+    {
+        gameOver.textContent = '';
+        playerWins = 0;
+        compWins = 0;
+        score.textContent = `You: ${playerWins} Computer: ${compWins}`;
+    }
+    playerSelection = 'paper';
+    playGame();
+});
+scissors.addEventListener('click', () => {
+    if (playerWins == 5 || compWins == 5)
+    {
+        gameOver.textContent = '';
+        playerWins = 0;
+        compWins = 0;
+        score.textContent = `You: ${playerWins} Computer: ${compWins}`;
+    }
+    playerSelection = 'scissors';
+    playGame();
+});
+
 //Define rock paper scissors function prototype
 function playGame()
 {
-    let playerSelection = prompt("Let's play rock, paper, scissors! Rock, paper, scissors...shoot!:");
-    
     let result = playRound(playerSelection, getComputerChoice());
 
-    console.log(result);
+    const divResultMsg = document.querySelector('.resultMsg');
+    divResultMsg.textContent = result;
 
     if (result === rockWin || result === paperWin || result === scissorsWin)
     {
@@ -45,34 +69,50 @@ function playGame()
         ++compWins;
     }
 
-    console.log(`You: ${playerWins}\nComputer: ${compWins}`);
+    score.textContent = `You: ${playerWins} Computer: ${compWins}`;
+
+    if(compWins === 5 || playerWins === 5)  
+    {
+        if (playerWins > compWins)
+        {
+            gameOver.textContent = `You won rock, paper, scissors!! :)`;
+        }
+        else if (compWins > playerWins)
+        {
+            gameOver.textContent = `You lost rock, paper, scissors :(`;
+        }
+        else
+        {
+            gameOver.textContent = `You tied rock, paper, scissors :|`;
+        }
+        divResultMsg.textContent = '';
+    }
 };
 //Play 1 round of rock paper scissors
 function playRound(playerSelection, computerSelection)
 {
-    let playerSelectionLower = playerSelection.toLowerCase();
 
-    if (playerSelectionLower === 'rock' && computerSelection === 'scissors')
+    if (playerSelection === 'rock' && computerSelection === 'scissors')
     {
         return rockWin;
     }
-    else if (playerSelectionLower === 'scissors' && computerSelection === 'paper')
+    else if (playerSelection === 'scissors' && computerSelection === 'paper')
     {
         return scissorsWin;
     }
-    else if (playerSelectionLower === 'paper' && computerSelection === 'rock')
+    else if (playerSelection === 'paper' && computerSelection === 'rock')
     {
         return paperWin;
     }
-    else if (playerSelectionLower === 'scissors' && computerSelection === 'rock')
+    else if (playerSelection === 'scissors' && computerSelection === 'rock')
     {
         return scissorsLose;
     }
-    else if (playerSelectionLower === 'paper' && computerSelection === 'scissors')
+    else if (playerSelection === 'paper' && computerSelection === 'scissors')
     {
         return paperLose;
     }
-    else if (playerSelectionLower === 'rock' && computerSelection === 'paper')
+    else if (playerSelection === 'rock' && computerSelection === 'paper')
     {
         return rockLose;
     }
